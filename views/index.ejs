@@ -1,0 +1,189 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #fdfbfb;
+            min-height: 100vh;
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        .background-shapes {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: -1;
+            overflow: hidden;
+            background: linear-gradient(135deg, #fff0f3 0%, #fff 100%);
+        }
+        .shape {
+            position: absolute;
+            border-radius: 50%;
+            filter: blur(50px);
+            opacity: 0.6;
+            animation: floatShape 20s infinite alternate;
+        }
+        .shape-1 {
+            width: 300px;
+            height: 300px;
+            background: #ffdde1;
+            top: -50px;
+            left: -50px;
+        }
+        .shape-2 {
+            width: 400px;
+            height: 400px;
+            background: #ee9ca7;
+            bottom: -100px;
+            right: -100px;
+            animation-duration: 25s;
+        }
+        .shape-3 {
+            width: 200px;
+            height: 200px;
+            background: #b6fbff;
+            top: 40%;
+            left: 20%;
+            opacity: 0.4;
+            animation-duration: 15s;
+        }
+
+        @keyframes floatShape {
+            0% { transform: translate(0, 0) rotate(0deg); }
+            100% { transform: translate(50px, 50px) rotate(20deg); }
+        }
+
+        .hero-card {
+            background: rgba(255, 255, 255, 0.7);
+            border: 1px solid rgba(255, 255, 255, 0.8);
+            border-radius: 25px;
+            box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            padding: 3rem;
+        }
+
+        @media (max-width: 768px) {
+            .hero-card {
+                padding: 2rem 1.5rem;
+                margin-top: 2rem;
+                margin-bottom: 2rem;
+            }
+            h1.display-4 {
+                font-size: 2.5rem; /* titlu mai mic pe mobil */
+            }
+            .btn-lg {
+                width: 100%; /* butoane pe toata latimea pe mobil */
+                margin-bottom: 10px;
+                margin-right: 0 !important;
+            }
+            .d-flex.justify-content-center {
+                flex-direction: column; /* butoanele unul sub altul pe mobil */
+            }
+        }
+
+        /* BUTOANE */
+        .gradient-text {
+            background: linear-gradient(45deg, #ee9ca7, #ff512f);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            font-weight: 800;
+        }
+
+        .btn-gradient {
+            background: linear-gradient(to right, #ffdde1, #ee9ca7);
+            border: none;
+            color: #444;
+            font-weight: 600;
+            transition: transform 0.2s;
+        }
+        .btn-gradient:hover {
+            transform: scale(1.05);
+            background: linear-gradient(to right, #ee9ca7, #ffdde1);
+            color: #222;
+        }
+
+        .btn-outline-custom {
+            border: 2px solid #ee9ca7;
+            color: #d46a7e;
+            font-weight: 600;
+            background: transparent;
+        }
+        .btn-outline-custom:hover {
+            background: #ee9ca7;
+            color: white;
+        }
+    </style>
+    </style>
+</head>
+<body>
+
+<div class="background-shapes">
+    <div class="shape shape-1"></div>
+    <div class="shape shape-2"></div>
+    <div class="shape shape-3"></div>
+</div>
+
+<div class="container min-vh-100 d-flex align-items-center justify-content-center">
+    <div class="row w-100 justify-content-center">
+        <div class="col-lg-8 col-md-10 col-12">
+
+            <div class="hero-card text-center animate__animated animate__zoomIn">
+
+                <div class="mb-4 animate__animated animate__fadeInDown animate__delay-1s">
+                    <span style="font-size: 4rem;">🛍️</span>
+                </div>
+
+                <h1 class="display-4 mb-3 gradient-text">Gestiune Produse</h1>
+
+                <p class="lead text-muted mb-5">
+                    Simplu. Rapid. Organizat.<br>
+                    Platforma ta modernă pentru administrarea stocurilor.
+                </p>
+
+                <% if (user) { %>
+                    <div class="alert alert-success border-0 shadow-sm d-inline-block px-4 py-2 rounded-pill mb-4 animate__animated animate__fadeIn">
+                        👋 Salut, <strong><%= user.username %></strong>!
+                    </div>
+                    <div class="d-flex justify-content-center gap-3">
+                        <a href="/manage-products" class="btn btn-gradient rounded-pill btn-lg px-5 shadow-sm">
+                            Vezi Produsele
+                        </a>
+                        <a href="/logout" class="btn btn-outline-custom rounded-pill btn-lg px-4">
+                            Logout
+                        </a>
+                    </div>
+
+                <% } else { %>
+                    <div class="d-flex justify-content-center">
+                        <a href="/login" class="btn btn-gradient rounded-pill btn-lg mr-3 shadow-sm px-5">
+                            Autentificare
+                        </a>
+                        <a href="/register" class="btn btn-outline-custom rounded-pill btn-lg px-5">
+                            Cont Nou
+                        </a>
+                    </div>
+                <% } %>
+
+                <div class="mt-5 text-muted small animate__animated animate__fadeInUp animate__delay-1s">
+                    © 2026 Proiect Node.js • Oiegas Giulia
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

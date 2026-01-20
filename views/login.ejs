@@ -1,0 +1,119 @@
+<!doctype html>
+<html lang="ro">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+    <style>
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: #fdfbfb;
+        }
+
+            .form-control:focus {
+                border-color: #ee9ca7;
+                box-shadow: 0 0 0 0.2rem rgba(238, 156, 167, 0.25);
+            }
+            .btn-gradient {
+                background: linear-gradient(to right, #ffdde1, #ee9ca7);
+                border: none;
+                color: #333;
+                font-weight: 600;
+                transition: all 0.3s ease;
+            }
+            .btn-gradient:hover {
+                background: linear-gradient(to right, #ee9ca7, #ffdde1);
+                transform: translateY(-2px);
+                box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            }
+            .card {
+                border: none;
+                border-radius: 20px; /* Colțuri mai rotunjite */
+            }
+            a.text-pink {
+                color: #ee9ca7;
+                font-weight: 600;
+                text-decoration: none;
+            }
+            a.text-pink:hover {
+                color: #d46a7e;
+                text-decoration: underline;
+            }
+
+    </style>
+</head>
+
+<body class="container" style="margin-top: 50px;">
+<nav class="navbar navbar-expand-lg navbar-light mb-5 shadow-sm"
+     style="background: linear-gradient(to right, #ffdde1, #ee9ca7);">
+    <div class="container">
+        <a class="navbar-brand font-weight-bold text-dark" href="/">
+            🛍️ Gestiune Produse
+        </a>
+
+        <button class="navbar-toggler border-0" type="button" data-toggle="collapse" data-target="#navbarNav">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav ml-auto align-items-center">
+                <li class="nav-item mx-2">
+                    <a class="nav-link text-dark" href="/manage-products">Produse</a>
+                </li>
+                <li class="nav-item mx-2">
+                    <a class="btn btn-light btn-sm rounded-pill px-3 shadow-sm" href="/add-product">
+                        ➕ Adaugă produs
+                    </a>
+                </li>
+                <li class="nav-item ml-3">
+                    <a class="nav-link text-muted" href="/logout" style="font-size: 0.9rem;">Logout ➔</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</nav>
+<div class="container">
+    <div class="row justify-content-center">
+        <div class="col-md-5">
+            <div class="card shadow-lg p-4">
+                <div class="card-body">
+                    <div class="text-center mb-4">
+                        <h2 class="font-weight-bold mb-1">Bine ai revenit! 💕</h2>
+                        <p class="text-muted small">Te rugăm să te autentifici în cont.</p>
+                    </div>
+
+                    <form action="/login" method="post">
+                        <div class="form-group mb-4">
+                            <label class="text-muted font-weight-bold small text-uppercase ml-2">Username</label>
+                            <input type="text" name="username" class="form-control form-control-lg bg-light border-0 rounded-pill px-4" placeholder="ex: elena_pop" required>
+                        </div>
+
+                        <div class="form-group mb-4">
+                            <label class="text-muted font-weight-bold small text-uppercase ml-2">Parola</label>
+                            <input type="password" name="password" class="form-control form-control-lg bg-light border-0 rounded-pill px-4" placeholder="••••••••" required>
+                        </div>
+
+                        <button type="submit" class="btn btn-gradient btn-block btn-lg rounded-pill mt-5 shadow-sm">
+                            Intră în Cont ➔
+                        </button>
+                    </form>
+
+                    <div class="text-center mt-4">
+                        <small class="text-muted">Nu ai încă un cont?</small><br>
+                        <a href="/register" class="text-pink">Creează unul acum ✨</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mt-3">
+                <a href="/" class="text-muted small text-decoration-none">← Înapoi la pagina principală</a>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
